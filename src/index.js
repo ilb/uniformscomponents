@@ -7,6 +7,7 @@ export { default as DateField } from './DateField';
 
 export const ajv = new Ajv({ allErrors: true, useDefaults: true, coerceTypes: true });
 ajv.addKeyword('uniforms');
+ajv.addKeyword('options');
 addFormats(ajv);
 
 export function createValidator(schema) {
