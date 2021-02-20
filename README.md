@@ -4,7 +4,7 @@
 
 ## Additional components
 ```
-npm install uniforms uniforms-bridge-json-schema uniforms-semantic
+npm install uniforms uniforms-bridge-json-schema uniforms-semantic ajv ajv-formats ajv-i18n react-datepicker
 ```
 
 ## Available Scripts
