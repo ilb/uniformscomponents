@@ -2,6 +2,11 @@
 
 > ✨ Bootstrapped with Create Snowpack App (CSA).
 
+## Additional components
+```
+npm install uniforms uniforms-bridge-json-schema uniforms-semantic
+```
+
 ## Available Scripts
 
 ### npm start
