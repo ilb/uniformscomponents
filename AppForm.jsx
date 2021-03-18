@@ -53,6 +53,7 @@ export default function AppForm() {
   };
 
   const model = {
+    profession: 'businessman',
     zip: 123456
   };
 
