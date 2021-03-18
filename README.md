@@ -5,6 +5,7 @@
 ## Peer dependencies
 
 ```bash
+npm install
 npx npm-install-peers
 ```
 
