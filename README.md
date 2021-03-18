@@ -2,9 +2,10 @@
 
 > ✨ Bootstrapped with Create Snowpack App (CSA).
 
-## Additional components
-```
-npm install uniforms uniforms-bridge-json-schema uniforms-semantic ajv ajv-formats ajv-i18n react-datepicker
+## Peer dependencies
+
+```bash
+npx npm-install-peers
 ```
 
 ## Available Scripts
