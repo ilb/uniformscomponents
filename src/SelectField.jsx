@@ -19,7 +19,7 @@ const Select = ({
   if (multipleSelect && !value) {
     selectValue = [];
   }
-  // handle case when when only one take only one value from url
+  // handle case when we have only one value as string
   if (multipleSelect && typeof value === 'string') {
     selectValue = [value];
   }
