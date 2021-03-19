@@ -17,23 +17,23 @@ export default function AppForm() {
         type: 'string',
         options: [
           {
-            label: 'Developer',
+            text: 'Developer',
             value: 'developer'
           },
           {
-            label: 'Tester',
+            text: 'Tester',
             value: 'tester'
           },
           {
-            label: 'Product owner',
+            text: 'Product owner',
             value: 'product-owner'
           },
           {
-            label: 'Project manager',
+            text: 'Project manager',
             value: 'project-manager'
           },
           {
-            label: 'Businessman',
+            text: 'Businessman',
             value: 'businessman'
           }
         ]
