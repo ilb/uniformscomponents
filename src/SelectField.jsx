@@ -10,11 +10,19 @@ const Select = ({
   multiple,
   onChange,
   value,
-  field
+  field,
+  disabled,
+  error,
+  showInlineError
 }) => {
   const multipleSelect = multiple || field.type === 'array';
   let selectValue = value;
-  let selectOptions = options || [];
+  let selectOptions =
+    options.map(({ label, text, value }) => {
+      let option = { value };
+      option = label && text ? { ...option, label, text } : { ...option, text: label || text };
+      return option;
+    }) || [];
 
   if (multipleSelect && !value) {
     selectValue = [];
@@ -39,6 +47,7 @@ const Select = ({
   };
   return (
     <Form.Select
+      error={!!error && (showInlineError ? error.message : true)}
       selectOnBlur={false}
       placeholder={placeholder}
       options={selectOptions}
@@ -47,6 +56,7 @@ const Select = ({
       multiple={multipleSelect}
       label={label}
       onChange={onSelectionChange}
+      disabled={disabled}
     />
   );
 };
