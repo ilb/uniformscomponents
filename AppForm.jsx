@@ -17,7 +17,8 @@ export default function AppForm() {
         type: 'string',
         options: [
           {
-            label: 'Developer',
+            label: 'Most selectable',
+            text: 'Developer',
             value: 'developer'
           },
           {
