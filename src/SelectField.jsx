@@ -52,6 +52,8 @@ const Select = ({
       placeholder={placeholder}
       options={selectOptions}
       selection
+      search
+      scrolling
       value={selectValue}
       multiple={multipleSelect}
       label={label}
