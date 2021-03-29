@@ -37,7 +37,10 @@ export default function AppForm() {
             label: 'Businessman',
             value: 'businessman'
           }
-        ]
+        ],
+        uniforms: {
+          search: true
+        }
       },
       regDate: { type: 'string', format: 'date' },
       workExperience: {
