@@ -1,7 +1,7 @@
 import Ajv from 'ajv';
 import JSONSchemaBridge from 'uniforms-bridge-json-schema';
 import localize from 'ajv-i18n';
-import addFormats from 'ajv-formats';
+//import addFormats from 'ajv-formats';
 export { default as CustomAutoField } from './CustomAutoField';
 export { default as DateField } from './DateField';
 

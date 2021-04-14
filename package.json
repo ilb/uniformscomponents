@@ -33,7 +33,6 @@
   },
   "peerDependencies": {
     "ajv": "^6.12.6",
-    "ajv-formats": "^1.5.1",
     "ajv-i18n": "^3.6.0",
     "react": "^17.0.1",
     "react-datepicker": "^3.5.0",
@@ -42,5 +41,6 @@
     "uniforms-bridge-json-schema": "^3.2.0",
     "uniforms-semantic": "^3.2.0",
     "semantic-ui-react": "^2.0.3"
-  }
+  },
+  "dependencies": {}
 }
