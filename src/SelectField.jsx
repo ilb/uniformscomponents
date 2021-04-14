@@ -52,6 +52,8 @@ const Select = ({
       placeholder={placeholder}
       options={selectOptions}
       selection
+      search={(field.uniforms && field.uniforms.search) || false}
+      scrolling
       value={selectValue}
       multiple={multipleSelect}
       label={label}
