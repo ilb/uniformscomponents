@@ -28,8 +28,8 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "jest": "^26.6.3",
     "prettier": "^2.2.1",
-    "snowpack": "^3.0.11",
-    "semantic-ui-offline": "^2.4.1-1"
+    "semantic-ui-offline": "^2.4.1-1",
+    "snowpack": "^3.0.11"
   },
   "peerDependencies": {
     "ajv": "^6.12.6",
@@ -37,10 +37,9 @@
     "react": "^17.0.1",
     "react-datepicker": "^3.5.0",
     "react-dom": "^17.0.1",
+    "semantic-ui-react": "^2.0.3",
     "uniforms": "^3.2.0",
     "uniforms-bridge-json-schema": "^3.2.0",
-    "uniforms-semantic": "^3.2.0",
-    "semantic-ui-react": "^2.0.3"
-  },
-  "dependencies": {}
+    "uniforms-semantic": "^3.2.0"
+  }
 }

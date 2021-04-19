@@ -1,4 +1,3 @@
-import React from 'react';
 import { Form } from 'semantic-ui-react';
 import { connectField } from 'uniforms';
 
@@ -13,9 +12,11 @@ const Select = ({
   field,
   disabled,
   error,
-  showInlineError
+  showInlineError,
+  onAfterChange
 }) => {
   const multipleSelect = multiple || field.type === 'array';
+
   let selectValue = value;
   let selectOptions =
     options.map(({ label, text, value }) => {
@@ -44,6 +45,7 @@ const Select = ({
 
   const onSelectionChange = (e, field) => {
     onChange(field.value);
+    onAfterChange && onAfterChange(field.value);
   };
   return (
     <Form.Select
