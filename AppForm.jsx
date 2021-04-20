@@ -49,11 +49,17 @@ export default function AppForm() {
         minimum: 0,
         maximum: 100
       },
+      phone: {
+        type: 'string',
+        uniforms: { type: 'phone', format: '+7 ### ###-##-##' },
+        minLength: 10,
+        maxLength: 10
+      },
       check: { type: 'boolean' },
       zip: { type: 'string', pattern: '[0-9]{5}' },
       color: { type: 'string', enum: ['red', 'amber', 'green'] }
     },
-    required: ['firstName', 'lastName']
+    required: ['firstName', 'lastName', 'phone']
   };
 
   const model = {

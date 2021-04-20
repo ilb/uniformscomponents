@@ -5,12 +5,17 @@ import { AutoField } from 'uniforms-semantic';
 
 import DateField from './DateField';
 import SelectField from './SelectField';
+import PhoneField from './PhoneField';
 
 const determineComponentFromProps = (props) => {
   const { field } = props;
   if (props.options) {
     return SelectField;
   }
+  if (props.field.uniforms?.type === 'phone') {
+    return PhoneField;
+  }
+
   switch (field.format) {
     case 'date':
       return DateField;
