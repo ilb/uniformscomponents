@@ -5,8 +5,7 @@
 ## Peer dependencies
 
 ```bash
-npm install
-npx npm-install-peers
+npm install && npx npm-install-peers
 ```
 
 ## Available Scripts
