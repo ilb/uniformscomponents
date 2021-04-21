@@ -30,20 +30,18 @@
     "jest": "^26.6.3",
     "prettier": "^2.2.1",
     "semantic-ui-offline": "^2.4.1-1",
-    "snowpack": "^3.0.11"
+    "snowpack": "^3.0.11",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "dependencies": {
     "ajv": "^6.12.6",
     "ajv-i18n": "^3.6.0",
     "react-datepicker": "^3.5.0",
+    "react-number-format": "^4.5.5",
     "semantic-ui-react": "^2.0.3",
-    "uniforms": "^3.2.0",
-    "uniforms-bridge-json-schema": "^3.2.0",
-    "uniforms-semantic": "^3.2.0",
-    "react-number-format": "^4.5.5"
-  },
-  "peerDependencies": {
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "uniforms": "^3.3.0",
+    "uniforms-bridge-json-schema": "^3.3.0",
+    "uniforms-semantic": "^3.3.0"
   }
 }
