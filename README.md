@@ -2,12 +2,6 @@
 
 > ✨ Bootstrapped with Create Snowpack App (CSA).
 
-## Peer dependencies
-
-```bash
-npm install && npx npm-install-peers
-```
-
 ## Available Scripts
 
 ### npm start
