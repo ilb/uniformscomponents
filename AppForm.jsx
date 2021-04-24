@@ -43,6 +43,10 @@ export default function AppForm() {
         }
       },
       amount: { type: 'number', uniforms: { decimalScale: 2, thousandSeparator: true } },
+      year: {
+        type: 'number',
+        uniforms: { decimalScale: 0, thousandSeparator: null, format: '####' }
+      },
       regDate: { type: 'string', format: 'date' },
       workExperience: {
         description: 'Work experience in years',
