@@ -42,6 +42,7 @@ export default function AppForm() {
           search: true
         }
       },
+      amount: { type: 'number', uniforms: { decimalScale: 2, thousandSeparator: true } },
       regDate: { type: 'string', format: 'date' },
       workExperience: {
         description: 'Work experience in years',

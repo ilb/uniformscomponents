@@ -6,9 +6,14 @@ import { AutoField } from 'uniforms-semantic';
 import DateField from './DateField';
 import SelectField from './SelectField';
 import PhoneField from './PhoneField';
+import NumField from './NumField';
 
 const determineComponentFromProps = (props) => {
   const { field } = props;
+  switch (props.fieldType) {
+    case Number:
+      return NumField;
+  }
   if (props.options) {
     return SelectField;
   }
