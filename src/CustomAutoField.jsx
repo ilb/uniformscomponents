@@ -15,7 +15,10 @@ const determineComponentFromProps = (props) => {
     case Number:
       return NumField;
     case String:
-      return TextField;
+      //FIX ME
+      if (props.maxLength) {
+        return TextField;
+      }
   }
   if (props.options) {
     return SelectField;
