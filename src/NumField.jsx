@@ -50,6 +50,7 @@ const CustomInput = ({
       max={field.maximum || Infinity}
       ref={inputRef}
       type={field.uniforms?.type || 'text'}
+      value={value ?? ''}
       onValueChange={(values) => {
         let value = field.type === 'string' ? values.value : values.floatValue;
 
