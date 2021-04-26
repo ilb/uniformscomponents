@@ -7,12 +7,15 @@ import DateField from './DateField';
 import SelectField from './SelectField';
 import PhoneField from './PhoneField';
 import NumField from './NumField';
+import TextField from './TextField';
 
 const determineComponentFromProps = (props) => {
   const { field } = props;
   switch (props.fieldType) {
     case Number:
       return NumField;
+    case String:
+      return TextField;
   }
   if (props.options) {
     return SelectField;

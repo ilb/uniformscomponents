@@ -11,7 +11,7 @@ export default function AppForm() {
     title: 'Guest',
     type: 'object',
     properties: {
-      firstName: { type: 'string', minLength: 1 },
+      firstName: { type: 'string', minLength: 1, maxLength: 10 },
       lastName: { type: 'string', minLength: 1 },
       profession: {
         type: 'string',
