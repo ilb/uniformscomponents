@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form } from 'semantic-ui-react';
 import { connectField } from 'uniforms';
 
@@ -17,6 +17,7 @@ const Select = ({
   onAfterChange
 }) => {
   const multipleSelect = multiple || field.type === 'array';
+  const [additions, setAdditions] = useState([]);
 
   let selectValue = value;
   let selectOptions =
@@ -25,6 +26,8 @@ const Select = ({
       option = label && text ? { ...option, label, text } : { ...option, text: label || text };
       return option;
     }) || [];
+
+  selectOptions.push(...additions);
 
   if (multipleSelect && !value) {
     selectValue = [];
@@ -54,6 +57,10 @@ const Select = ({
       selectOnBlur={false}
       placeholder={placeholder}
       options={selectOptions}
+      onAddItem={(e, { value }) =>
+        setAdditions((additions) => [...additions, { text: value, value }])
+      }
+      allowAdditions={field.uniforms?.allowAdditions}
       selection
       search={(field.uniforms && field.uniforms.search) || false}
       scrolling
