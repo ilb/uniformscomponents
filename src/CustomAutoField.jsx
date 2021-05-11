@@ -11,7 +11,15 @@ import TextField from './TextField';
 
 const determineComponentFromProps = (props) => {
   const { field } = props;
-
+  switch (props.fieldType) {
+    case Number:
+      return NumField;
+    case String:
+      //FIX ME
+      if (props.maxLength) {
+        return TextField;
+      }
+  }
   if (props.options) {
     return SelectField;
   }

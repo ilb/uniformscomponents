@@ -59,6 +59,7 @@ const Date = ({
           selected={dateParse(value)}
           locale={ru}
           dateFormat="dd.MM.yyyy"
+          isClearable
           onChange={(value) => onChange(dateFormat(value))}
         />
 

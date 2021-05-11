@@ -71,7 +71,8 @@ export default function AppForm() {
   const model = {
     profession: 'businessman',
     zip: 123456,
-    regDate: '2021-04-15'
+    regDate: '2021-04-15',
+    year: 2014
   };
 
   return (
