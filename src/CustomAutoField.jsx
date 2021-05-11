@@ -31,6 +31,14 @@ const determineComponentFromProps = (props) => {
     case 'date':
       return DateField;
   }
+
+  switch (props.fieldType) {
+    case Number:
+      return NumField;
+    case String:
+      return TextField;
+  }
+
   return null;
 };
 
