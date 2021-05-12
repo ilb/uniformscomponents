@@ -60,6 +60,7 @@ const Date = ({
           locale={ru}
           dateFormat="dd.MM.yyyy"
           isClearable
+          autoComplete="off"
           onChange={(value) => onChange(dateFormat(value))}
         />
 
