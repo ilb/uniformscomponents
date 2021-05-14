@@ -27,6 +27,7 @@ function Text({
   ...props
 }) {
   const inputProps = { maxLength };
+  const displayType = props.displayType || 'input';
   return (
     <div
       className={classnames(className, { disabled, error, required }, 'field')}
@@ -40,19 +41,22 @@ function Text({
           { left: iconLeft, icon: icon || iconLeft },
           'input'
         )}>
-        <input
-          autoComplete={autoComplete}
-          disabled={disabled}
-          id={id}
-          name={name}
-          onChange={(event) => onChange(event.target.value)}
-          placeholder={placeholder}
-          readOnly={readOnly}
-          ref={inputRef}
-          type={type}
-          value={value ?? ''}
-          {...inputProps}
-        />
+        {displayType == 'input' && (
+          <input
+            autoComplete={autoComplete}
+            disabled={disabled}
+            id={id}
+            name={name}
+            onChange={(event) => onChange(event.target.value)}
+            placeholder={placeholder}
+            readOnly={readOnly}
+            ref={inputRef}
+            type={type}
+            value={value ?? ''}
+            {...inputProps}
+          />
+        )}
+        {displayType == 'text' && value}
 
         {(icon || iconLeft) && <i className={`${icon || iconLeft} icon`} {...iconProps} />}
       </div>
