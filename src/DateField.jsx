@@ -11,7 +11,7 @@ import ru from './date/locale/ru';
 
 const dateParse = (value) => value && parseISO(value);
 const dateFormat = (value) => value && formatISO(value, { representation: 'date' });
-
+const dateValue = (value) => value && dateFormat(dateParse(value));
 const Date = ({
   className,
   disabled,
@@ -35,6 +35,7 @@ const Date = ({
   ...props
 }) => {
   //console.log(props);
+  const displayType = props.displayType;
   return (
     <div
       className={classnames(className, { disabled, error, required }, 'field')}
@@ -48,21 +49,25 @@ const Date = ({
           { left: iconLeft, icon: icon || iconLeft },
           'input'
         )}>
-        <DatePicker
-          disabled={disabled}
-          id={id}
-          maxDate={dateParse(max)}
-          minDate={dateParse(min)}
-          name={name}
-          placeholderText={placeholder}
-          ref={inputRef}
-          selected={dateParse(value)}
-          locale={ru}
-          dateFormat="dd.MM.yyyy"
-          isClearable
-          autoComplete="off"
-          onChange={(value) => onChange(dateFormat(value))}
-        />
+        {displayType === 'text' ? (
+          dateValue(value)
+        ) : (
+          <DatePicker
+            disabled={disabled}
+            id={id}
+            maxDate={dateParse(max)}
+            minDate={dateParse(min)}
+            name={name}
+            placeholderText={placeholder}
+            ref={inputRef}
+            selected={dateParse(value)}
+            locale={ru}
+            dateFormat="dd.MM.yyyy"
+            isClearable
+            autoComplete="off"
+            onChange={(value) => onChange(dateFormat(value))}
+          />
+        )}
 
         {(icon || iconLeft) && <i className={`${icon || iconLeft} icon`} {...iconProps} />}
       </div>
