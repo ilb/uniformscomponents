@@ -40,7 +40,8 @@ export default function AppForm() {
         ],
         uniforms: {
           search: true,
-          allowAdditions: true
+          allowAdditions: true,
+          displayType: 'text'
         }
       },
       amount: { type: 'number', uniforms: { decimalScale: 2, thousandSeparator: true } },
@@ -48,7 +49,7 @@ export default function AppForm() {
         type: 'number',
         uniforms: { decimalScale: 0, thousandSeparator: null, format: '####' }
       },
-      regDate: { type: 'string', format: 'date' },
+      regDate: { type: 'string', format: 'date', displayType: 'text' },
       workExperience: {
         description: 'Work experience in years',
         type: 'integer',

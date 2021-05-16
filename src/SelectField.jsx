@@ -30,6 +30,9 @@ const Select = ({
   const displayType = props.displayType || 'input';
   const [additions, setAdditions] = useState([]);
 
+  let selectedOption = options.filter((opt) => opt.value === value);
+  let selectedText =
+    selectedOption && selectedOption[0] && (selectedOption[0].label || selectedOption[0].text);
   let selectValue = value;
   let selectOptions =
     options.map(({ label, text, value }) => {
@@ -77,7 +80,7 @@ const Select = ({
               { left: iconLeft, icon: icon || iconLeft },
               'input'
             )}>
-            {value}
+            {selectedText}
 
             {(icon || iconLeft) && <i className={`${icon || iconLeft} icon`} {...iconProps} />}
           </div>

@@ -6,12 +6,12 @@ import parseISO from './date/parseISO';
 import formatISO from './date/formatISO';
 import ru from './date/locale/ru';
 // import parseISO from 'date-fns/parseISO';
-// import formatISO from 'date-fns/formatISO';
+import format from 'date-fns/format';
 // import ru from 'date-fns/locale/ru';
 
 const dateParse = (value) => value && parseISO(value);
 const dateFormat = (value) => value && formatISO(value, { representation: 'date' });
-const dateValue = (value) => value && dateFormat(dateParse(value));
+const dateValue = (value, fmt) => value && format(dateParse(value), fmt);
 const Date = ({
   className,
   disabled,
@@ -36,6 +36,7 @@ const Date = ({
 }) => {
   //console.log(props);
   const displayType = props.displayType;
+  const dateDisplayFormat = 'dd.MM.yyyy';
   return (
     <div
       className={classnames(className, { disabled, error, required }, 'field')}
@@ -50,7 +51,7 @@ const Date = ({
           'input'
         )}>
         {displayType === 'text' ? (
-          dateValue(value)
+          dateValue(value, dateDisplayFormat)
         ) : (
           <DatePicker
             disabled={disabled}
@@ -62,7 +63,7 @@ const Date = ({
             ref={inputRef}
             selected={dateParse(value)}
             locale={ru}
-            dateFormat="dd.MM.yyyy"
+            dateFormat={dateDisplayFormat}
             isClearable
             autoComplete="off"
             onChange={(value) => onChange(dateFormat(value))}
