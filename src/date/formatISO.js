@@ -7,5 +7,11 @@ function pad(number) {
 
 /*eslint no-unused-vars: ["error", { "args": "none" }]*/
 export default function formatISO(date, options) {
-  return date.getUTCFullYear() + '-' + pad(date.getMonth() + 1) + '-' + pad(date.getDate());
+  var getMonth = pad(date.getMonth() + 1);
+  var getDate = pad(date.getDate());
+  var getYear = date.getUTCFullYear();
+
+  if (getMonth === '01' && getDate === '01') {getYear++;}
+
+  return getYear + '-' + getMonth + '-' + getDate;
 }
