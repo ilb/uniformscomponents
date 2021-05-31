@@ -37,7 +37,6 @@
   "dependencies": {
     "ajv": "^6.12.6",
     "ajv-i18n": "^3.6.0",
-    "date-fns": "^2.22.1",
     "react-datepicker": "^3.5.0",
     "react-number-format": "^4.5.5",
     "semantic-ui-react": "^2.0.3",
