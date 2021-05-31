@@ -20,6 +20,7 @@ const ru = {
     day: (n) => days[n]
   },
   formatLong: {},
+  match: {},
   options: {
     weekStartsOn: 1
   }
