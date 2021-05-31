@@ -2,12 +2,10 @@ import React from 'react';
 import classnames from 'classnames';
 import { connectField, filterDOMProps } from 'uniforms';
 import DatePicker from 'react-datepicker';
-import parseISO from './date/parseISO';
-import formatISO from './date/formatISO';
-import ru from './date/locale/ru';
-// import parseISO from 'date-fns/parseISO';
+import parseISO from 'date-fns/parseISO';
+import formatISO from 'date-fns/formatISO';
+import ru from 'date-fns/locale/ru';
 import format from 'date-fns/format';
-// import ru from 'date-fns/locale/ru';
 
 const dateParse = (value) => value && parseISO(value);
 const dateFormat = (value) => value && formatISO(value, { representation: 'date' });
