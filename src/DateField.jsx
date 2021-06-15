@@ -64,7 +64,9 @@ const Date = ({
             dateFormat={dateDisplayFormat}
             isClearable
             autoComplete="off"
-            onChange={(value) => onChange(dateFormat(value))}
+            onChange={(value) => {
+              value === null ? onChange() : onChange(dateFormat(value));
+            }}
           />
         )}
 
