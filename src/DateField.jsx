@@ -54,6 +54,7 @@ const Date = ({
           <DatePicker
             disabled={disabled}
             id={id}
+            className={"adaptiveDate"}
             maxDate={dateParse(max)}
             minDate={dateParse(min)}
             name={name}
