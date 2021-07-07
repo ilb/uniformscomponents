@@ -39,9 +39,7 @@ export default function AppForm() {
           }
         ],
         uniforms: {
-          search: true,
-          allowAdditions: true,
-          displayType: 'text'
+          search: true
         }
       },
       amount: { type: 'number', uniforms: { decimalScale: 2, thousandSeparator: true } },
