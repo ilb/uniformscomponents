@@ -42,6 +42,26 @@ export default function AppForm() {
           search: true
         }
       },
+      users: {
+        type: 'array',
+        title: 'User',
+        options: [
+          {
+            label: 'Tester',
+            value: 'tester'
+          },
+          {
+            label: 'Project manager',
+            value: 'project-manager'
+          },
+          {
+            label: 'Developer',
+            value: 'developer'
+          }
+        ],
+        items: { type: 'string' },
+        uniforms: { search: 'true' }
+      },
       amount: { type: 'number', uniforms: { decimalScale: 2, thousandSeparator: true } },
       year: {
         type: 'number',
