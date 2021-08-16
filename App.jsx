@@ -1,5 +1,6 @@
 import React from 'react';
-import 'semantic-ui-offline/semantic.min.css';
+import 'fomantic-ui-css/semantic.min.css';
+// import 'semantic-ui-offline/semantic.min.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import AppForm from './AppForm';
 import ManualForm from './ManualForm';
