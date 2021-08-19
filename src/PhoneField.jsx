@@ -3,10 +3,11 @@ import NumberFormat from 'react-number-format';
 import { Form, Input } from 'semantic-ui-react';
 import { connectField } from 'uniforms';
 
-const Phone = ({ label, value, onChange, field, disabled, error, showInlineError, required }) => {
+const Phone = ({ label, value, onChange, field, disabled, error, showInlineError, required, onAfterChange }) => {
   const inputRef = useRef();
   const handleOnValueChange = (value) => {
     onChange(value);
+    onAfterChange && onAfterChange(value);
   };
 
   useEffect(() => {

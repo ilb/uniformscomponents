@@ -16,13 +16,15 @@ const CustomInput = ({
   showInlineError,
   required,
   actionText,
-  onActionClick
+  onActionClick,
+  onAfterChange
 }) => {
   const [inputValue, setInputValue] = useState(value || '');
   const inputRef = useRef();
   const handleOnValueChange = (value) => {
     setInputValue(value);
     onChange(value);
+    onAfterChange && onAfterChange(value);
   };
 
   const inputAdditionalLabel = additionalLabel || field.uniforms?.additionalLabel;

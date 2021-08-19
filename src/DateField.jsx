@@ -30,6 +30,7 @@ const Date = ({
   showInlineError,
   value,
   wrapClassName,
+  onAfterChange,
   ...props
 }) => {
   //console.log(props);
@@ -67,6 +68,7 @@ const Date = ({
             autoComplete="off"
             onChange={(value) => {
               value === null ? onChange() : onChange(dateFormat(value));
+              value && onAfterChange && onAfterChange(dateFormat(value));
             }}
           />
         )}
