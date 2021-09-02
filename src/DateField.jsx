@@ -65,6 +65,9 @@ const Date = ({
             locale={ru}
             dateFormat={dateDisplayFormat}
             isClearable
+            showMonthDropdown
+            showYearDropdown
+            dropdownMode="select"
             autoComplete="off"
             onChange={(value) => {
               value === null ? onChange() : onChange(dateFormat(value));
