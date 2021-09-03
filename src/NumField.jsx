@@ -17,7 +17,8 @@ const CustomInput = ({
   required,
   actionText,
   onActionClick,
-  onAfterChange
+  onAfterChange,
+  onBlur
 }) => {
   const [inputValue, setInputValue] = useState(value || '');
   const inputRef = useRef();
@@ -48,6 +49,7 @@ const CustomInput = ({
   const inputElement = (
     <NumberFormat
       disabled={disabled}
+      onBlur={onBlur}
       min={field.minimum || -Infinity}
       max={field.maximum || Infinity}
       ref={inputRef}
