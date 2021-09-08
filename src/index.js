@@ -5,6 +5,7 @@ import localize from 'ajv-i18n';
 export { default as CustomAutoField } from './CustomAutoField';
 export { default as DateField } from './DateField';
 export { default as PhoneField } from './PhoneField';
+export { default as SelectField } from './SelectField';
 
 export const ajv = new Ajv({ allErrors: true, useDefaults: true, coerceTypes: true });
 ajv.addKeyword('uniforms');
