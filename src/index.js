@@ -12,19 +12,29 @@ ajv.addKeyword('uniforms');
 ajv.addKeyword('options');
 //addFormats(ajv);
 
-export function createValidator(schema) {
+export function createValidator(schema, additionalValidator) {
   const validator = ajv.compile(schema);
 
   return (model) => {
+    let errors = [];
+
     validator(model);
 
     if (validator.errors && validator.errors.length) {
-      localize.ru(validator.errors);
-      return { details: validator.errors };
+      errors = validator.errors;
+    }
+
+    if (additionalValidator) {
+      errors = errors.concat(additionalValidator(model));
+    }
+
+    if (errors.length) {
+      localize.ru(errors);
+      return { details: errors };
     }
   };
 }
 
-export function createSchemaBridge(schema) {
-  return new JSONSchemaBridge(schema, createValidator(schema));
+export function createSchemaBridge(schema, additionalValidator) {
+  return new JSONSchemaBridge(schema, createValidator(schema, additionalValidator));
 }
