@@ -25,6 +25,7 @@ function Text({
   wrapClassName,
   maxLength,
   onAfterChange,
+  capitalize,
   ...props
 }) {
   const inputProps = { maxLength };
@@ -42,15 +43,16 @@ function Text({
           { left: iconLeft, icon: icon || iconLeft },
           'input'
         )}>
-        {displayType == 'input' && (
+        {displayType === 'input' && (
           <input
             autoComplete={autoComplete}
             disabled={disabled}
             id={id}
             name={name}
             onChange={(event) => {
-              onChange(event.target.value);
-              onAfterChange && onAfterChange(event.target.value);
+              const value = capitalize ? event.target.value.toUpperCase() : event.target.value;
+              onChange(value);
+              onAfterChange && onAfterChange(value);
             }}
             placeholder={placeholder}
             readOnly={readOnly}
@@ -60,7 +62,7 @@ function Text({
             {...inputProps}
           />
         )}
-        {displayType == 'text' && value}
+        {displayType === 'text' && value}
 
         {(icon || iconLeft) && <i className={`${icon || iconLeft} icon`} {...iconProps} />}
       </div>
