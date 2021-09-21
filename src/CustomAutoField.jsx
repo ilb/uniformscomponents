@@ -11,6 +11,11 @@ import TextField from './TextField';
 
 const determineComponentFromProps = (props) => {
   const { field } = props;
+
+  if (props.field.uniforms?.type === 'phone') {
+    return PhoneField;
+  }
+
   switch (props.fieldType) {
     case Number:
       return NumField;
@@ -22,9 +27,6 @@ const determineComponentFromProps = (props) => {
   }
   if (props.options) {
     return SelectField;
-  }
-  if (props.field.uniforms?.type === 'phone') {
-    return PhoneField;
   }
 
   switch (field.format) {
