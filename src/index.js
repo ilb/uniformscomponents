@@ -12,6 +12,28 @@ ajv.addKeyword('uniforms');
 ajv.addKeyword('options');
 //addFormats(ajv);
 
+// email or empty string
+ajv.addFormat(
+  'email',
+  /(^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)*$)|(^$)/
+);
+
+ajv.addKeyword('isNotEmpty', {
+  type: 'string',
+  errors: true,
+  validate: function validate(schema, data, parent, key) {
+    validate.errors = [
+      {
+        keyword: 'isNotEmpty',
+        message: 'должно иметь обязательное поле ' + key,
+        params: { keyword: 'isNotEmpty' }
+      }
+    ];
+
+    return typeof data === 'string' && data.trim() !== '';
+  }
+});
+
 export function createValidator(schema, additionalValidator) {
   const validator = ajv.compile(schema);
 
