@@ -3,15 +3,27 @@ import NumberFormat from 'react-number-format';
 import { Form, Input } from 'semantic-ui-react';
 import { connectField } from 'uniforms';
 
-const Phone = ({ label, value, onChange, field, disabled, error, showInlineError, required, onAfterChange }) => {
+const Phone = ({
+  label,
+  value,
+  onChange,
+  field,
+  disabled,
+  error,
+  showInlineError,
+  required,
+  onAfterChange,
+  ...props
+}) => {
   const inputRef = useRef();
+  const displayType = props.displayType || 'input';
   const handleOnValueChange = (value) => {
     onChange(value);
     onAfterChange && onAfterChange(value);
   };
 
   useEffect(() => {
-    const value = inputRef?.current.value;
+    const value = inputRef?.current?.value;
 
     if (value) {
       handleOnValueChange(value);
@@ -47,7 +59,8 @@ const Phone = ({ label, value, onChange, field, disabled, error, showInlineError
     <>
       <Form.Field required={required} error={!!error} disabled={disabled}>
         {label && <label>{label}</label>}
-        {inputElement}
+        {displayType === 'input' && inputElement}
+        {displayType === 'text' && value}
         {!!(error && showInlineError) && (
           <div className="ui red basic pointing label" style={{ textAlign: 'center' }}>
             {error.message}
