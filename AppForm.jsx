@@ -12,7 +12,7 @@ export default function AppForm() {
     type: 'object',
     properties: {
       firstName: { type: 'string', minLength: 1, maxLength: 10 },
-      lastName: { type: 'string', minLength: 1 },
+      lastName: { type: 'string', isNotEmpty: true },
       profession: {
         type: 'string',
         options: [
@@ -79,6 +79,11 @@ export default function AppForm() {
         uniforms: { type: 'phone', format: '+7 ### ###-##-##' },
         minLength: 10,
         maxLength: 10
+      },
+      email: {
+        title: 'E-mail',
+        type: 'string',
+        format: 'email'
       },
       check: { type: 'boolean' },
       zip: { type: 'string', pattern: '[0-9]{5}' },
