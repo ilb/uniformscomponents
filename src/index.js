@@ -1,7 +1,7 @@
 import Ajv from 'ajv';
 import JSONSchemaBridge from 'uniforms-bridge-json-schema';
 import localize from 'ajv-i18n';
-//import addFormats from 'ajv-formats';
+import addFormats from 'ajv-formats';
 export { default as CustomAutoField } from './CustomAutoField';
 export { default as DateField } from './DateField';
 export { default as PhoneField } from './PhoneField';
@@ -10,7 +10,7 @@ export { default as SelectField } from './SelectField';
 export const ajv = new Ajv({ allErrors: true, useDefaults: true, coerceTypes: true });
 ajv.addKeyword('uniforms');
 ajv.addKeyword('options');
-//addFormats(ajv);
+addFormats(ajv);
 
 export function createValidator(schema, additionalValidator) {
   const validator = ajv.compile(schema);

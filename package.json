@@ -35,7 +35,8 @@
     "snowpack": "^3.0.11"
   },
   "dependencies": {
-    "ajv": "^6.12.6",
+    "ajv": "^8.6.3",
+    "ajv-formats": "^2.1.1",
     "ajv-i18n": "^3.6.0",
     "date-fns": "^2.22.1",
     "react-datepicker": "^3.5.0",
