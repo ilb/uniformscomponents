@@ -6,6 +6,7 @@ import parseISO from 'date-fns/parseISO';
 import formatISO from 'date-fns/formatISO';
 import ru from 'date-fns/locale/ru';
 import format from 'date-fns/format';
+import NumberFormat from 'react-number-format';
 
 const dateParse = (value) => value && parseISO(value);
 const dateFormat = (value) => value && formatISO(value, { representation: 'date' });
@@ -33,9 +34,9 @@ const Date = ({
   onAfterChange,
   ...props
 }) => {
-  //console.log(props);
   const displayType = props.displayType;
   const dateDisplayFormat = 'dd.MM.yyyy';
+
   return (
     <div
       className={classnames(className, { disabled, error, required }, 'field')}
@@ -52,28 +53,7 @@ const Date = ({
         {displayType === 'text' ? (
           dateValue(value, dateDisplayFormat)
         ) : (
-          <DatePicker
-            disabled={disabled}
-            id={id}
-            className={"adaptiveDate"}
-            maxDate={dateParse(max)}
-            minDate={dateParse(min)}
-            name={name}
-            placeholderText={placeholder}
-            ref={inputRef}
-            selected={dateParse(value)}
-            locale={ru}
-            dateFormat={dateDisplayFormat}
-            isClearable
-            showMonthDropdown
-            showYearDropdown
-            dropdownMode="select"
-            autoComplete="off"
-            onChange={(value) => {
-              value === null ? onChange() : onChange(dateFormat(value));
-              value && onAfterChange && onAfterChange(dateFormat(value));
-            }}
-          />
+          <NumberFormat onChange={onChange} customInput={Element} format="##.##.####" prefix="" />
         )}
 
         {(icon || iconLeft) && <i className={`${icon || iconLeft} icon`} {...iconProps} />}
@@ -83,6 +63,45 @@ const Date = ({
         <div className="ui red basic pointing label">{errorMessage}</div>
       )}
     </div>
+  );
+};
+
+const Element = (fieldData) => {
+  const dateDisplayFormat = 'dd.MM.yyyy';
+  return (
+    <DatePicker
+      disabled={fieldData.disabled}
+      id={fieldData.id}
+      className={'adaptiveDate'}
+      maxDate={dateParse(fieldData.max)}
+      minDate={dateParse(fieldData.min)}
+      name={fieldData.name}
+      placeholderText={fieldData.placeholder}
+      ref={fieldData.inputRef}
+      selected={dateParse(fieldData.value)}
+      locale={ru}
+      dateFormat={dateDisplayFormat}
+      isClearable
+      showMonthDropdown
+      showYearDropdown
+      dropdownMode="select"
+      autoComplete="off"
+      // onChange={(value) => {
+      //   console.log(value);
+      //   // value === null ? onChange() : onChange(dateFormat(value));
+      //   // value && onAfterChange && onAfterChange(dateFormat(value));
+      // }}
+      onChange={(value, event) => {
+        event.target = {
+          type: 'text',
+          value: value.toString(),
+          name: fieldData.Name,
+          focus: () => {}
+        };
+
+        fieldData.onChange(event);
+      }}
+    />
   );
 };
 
