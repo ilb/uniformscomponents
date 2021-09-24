@@ -35,8 +35,8 @@ const Select = ({
     selectedOption && selectedOption[0] && (selectedOption[0].label || selectedOption[0].text);
   let selectValue = value;
   let selectOptions =
-    options.map(({ label, text, value }) => {
-      let option = { value };
+    options.map(({ label, text, value, key }) => {
+      let option = { value, key };
       option = label && text ? { ...option, label, text } : { ...option, text: label || text };
       return option;
     }) || [];
