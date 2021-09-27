@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Form } from 'semantic-ui-react';
 import { connectField, filterDOMProps } from 'uniforms';
 import classnames from 'classnames';
+import _ from 'lodash';
 
 const Select = ({
   label,
@@ -30,7 +31,7 @@ const Select = ({
   const displayType = props.displayType || 'input';
   const [additions, setAdditions] = useState([]);
 
-  let selectedOption = options.filter((opt) => opt.value === value);
+  let selectedOption = options.filter((opt) => _.isEqual(opt.value, value));
   let selectedText =
     selectedOption && selectedOption[0] && (selectedOption[0].label || selectedOption[0].text);
   let selectValue = value;
