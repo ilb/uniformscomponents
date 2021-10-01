@@ -6,6 +6,7 @@ import parseISO from 'date-fns/parseISO';
 import formatISO from 'date-fns/formatISO';
 import ru from 'date-fns/locale/ru';
 import format from 'date-fns/format';
+import MaskedTextInput from 'react-input-mask';
 
 const dateParse = (value) => value && parseISO(value);
 const dateFormat = (value) => value && formatISO(value, { representation: 'date' });
@@ -53,9 +54,10 @@ const Date = ({
           dateValue(value, dateDisplayFormat)
         ) : (
           <DatePicker
+            customInput={<MaskedTextInput mask="99.99.9999" />}
             disabled={disabled}
             id={id}
-            className={"adaptiveDate"}
+            className={'adaptiveDate'}
             maxDate={dateParse(max)}
             minDate={dateParse(min)}
             name={name}
