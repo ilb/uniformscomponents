@@ -18,7 +18,8 @@ const CustomInput = ({
   actionText,
   onActionClick,
   onAfterChange,
-  onBlur
+  onBlur,
+  readOnly
 }) => {
   const [inputValue, setInputValue] = useState(value || '');
   const inputRef = useRef();
@@ -53,6 +54,7 @@ const CustomInput = ({
       min={field.minimum || -Infinity}
       max={field.maximum || Infinity}
       ref={inputRef}
+      readOnly={readOnly}
       type={field.uniforms?.type || 'text'}
       value={value ?? ''}
       onValueChange={(values) => {
