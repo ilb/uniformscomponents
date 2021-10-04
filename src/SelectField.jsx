@@ -25,6 +25,7 @@ const Select = ({
   icon,
   errorMessage,
   iconProps,
+  capitalize,
   ...props
 }) => {
   const multipleSelect = multiple || field.type === 'array';
@@ -101,6 +102,14 @@ const Select = ({
           }
           allowAdditions={field.uniforms?.allowAdditions}
           selection
+          onInput={(event) => {
+            if (capitalize) {
+              let target = event.target;
+              let p = target.selectionStart;
+              target.value = target.value.toUpperCase();
+              target.setSelectionRange(p, p);
+            }
+          }}
           search={(field.uniforms && field.uniforms.search) || false}
           scrolling
           value={selectValue}
