@@ -13,6 +13,7 @@ export default function AppForm() {
     properties: {
       firstName: { type: 'string', minLength: 1 },
       lastName: { type: 'string', minLength: 1 },
+      age: { type: 'number', minLength: 1 },
       begDate: { type: 'string', format: 'date' },
       endDate: { type: 'string', format: 'date' }
     }
@@ -33,6 +34,7 @@ export default function AppForm() {
       showInlineError={true}>
       <AutoField name="firstName" />
       <AutoField name="lastName" />
+      <CustomAutoField name="age" readOnly />
 
       <CustomAutoField name="begDate" />
       <CustomAutoField name="endDate" />
