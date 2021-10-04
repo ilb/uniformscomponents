@@ -63,6 +63,7 @@ export default function AppForm() {
         uniforms: { search: 'true' }
       },
       amount: { type: 'number', uniforms: { decimalScale: 2, thousandSeparator: true } },
+      readOnly: { type: 'number', readOnly: true },
       year: {
         type: 'number',
         uniforms: { decimalScale: 0, thousandSeparator: null, format: '####' }
