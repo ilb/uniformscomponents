@@ -1,6 +1,7 @@
 import classnames from 'classnames';
 import React from 'react';
 import { connectField, filterDOMProps } from 'uniforms';
+import MaskedTextInput from 'react-input-mask';
 
 function Text({
   autoComplete,
@@ -26,6 +27,7 @@ function Text({
   maxLength,
   onAfterChange,
   capitalize,
+  mask,
   ...props
 }) {
   const inputProps = { maxLength };
@@ -44,7 +46,8 @@ function Text({
           'input'
         )}>
         {displayType === 'input' && (
-          <input
+          <MaskedTextInput
+            mask={mask}
             autoComplete={autoComplete}
             disabled={disabled}
             id={id}
