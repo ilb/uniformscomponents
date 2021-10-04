@@ -49,8 +49,16 @@ function Text({
             disabled={disabled}
             id={id}
             name={name}
+            onInput={(event) => {
+              if (capitalize) {
+                let target = event.target;
+                let p = target.selectionStart;
+                target.value = target.value.toUpperCase();
+                target.setSelectionRange(p, p);
+              }
+            }}
             onChange={(event) => {
-              const value = capitalize ? event.target.value.toUpperCase() : event.target.value;
+              const value = event.target.value;
               onChange(value);
               onAfterChange && onAfterChange(value);
             }}
