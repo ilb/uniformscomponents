@@ -1,7 +1,7 @@
 import React from 'react';
 import { AutoField, AutoForm, SubmitField } from 'uniforms-semantic';
-import { createSchemaBridge } from './src';
-import { CustomAutoField } from './src';
+import { createSchemaBridge } from '../src';
+import { CustomAutoField } from '../src';
 
 export default function AppForm() {
   function onSubmit(data) {
