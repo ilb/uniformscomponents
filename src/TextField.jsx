@@ -28,6 +28,7 @@ function Text({
   onAfterChange,
   capitalize,
   mask,
+  replace,
   ...props
 }) {
   const inputProps = { maxLength };
@@ -61,7 +62,10 @@ function Text({
               }
             }}
             onChange={(event) => {
-              const value = event.target.value;
+              let value = event.target.value;
+              if (replace) {
+                value = value.replace(replace, '').replace(/\s+/g, ' ').replace(/^\s+/g, '');
+              }
               onChange(value);
               onAfterChange && onAfterChange(value);
             }}
