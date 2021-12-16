@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React from 'react';
+import React, { useState } from 'react';
 import { connectField, filterDOMProps } from 'uniforms';
 import MaskedTextInput from 'react-input-mask';
 
@@ -30,10 +30,21 @@ function Text({
   mask,
   replace,
   normalizeSpace,
+  viewPassword,
   ...props
 }) {
   const inputProps = { maxLength };
   const displayType = props.displayType || 'input';
+
+  const [typeState, setTypeState] = useState(type);
+  const toggleViewPassword = (typeState) => {
+    if (typeState == 'password') {
+      setTypeState('text');
+    } else {
+      setTypeState('password');
+    }
+  };
+
   return (
     <div
       className={classnames(className, { disabled, error, required }, 'field')}
@@ -76,10 +87,16 @@ function Text({
             placeholder={placeholder}
             readOnly={readOnly}
             ref={inputRef}
-            type={type}
+            type={typeState ? typeState : type}
             value={value ?? ''}
             {...inputProps}
           />
+        )}
+        {viewPassword && (
+          <i
+            className={typeState == 'password' ? 'hide icon' : 'unhide icon'}
+            style={{ position: 'absolute', top: '25%', right: '7px', cursor: 'pointer' }}
+            onClick={() => toggleViewPassword(typeState)}></i>
         )}
         {displayType === 'text' && value}
 
