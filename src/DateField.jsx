@@ -71,6 +71,7 @@ const Date = ({
             showYearDropdown
             dropdownMode="select"
             autoComplete="off"
+            preventOpenOnFocus
             onChange={(value) => {
               value === null ? onChange() : onChange(dateFormat(value));
               value && onAfterChange && onAfterChange(dateFormat(value));
