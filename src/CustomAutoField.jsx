@@ -16,6 +16,10 @@ const determineComponentFromProps = (props) => {
     return PhoneField;
   }
 
+  if (props.options) {
+    return SelectField;
+  }
+
   switch (props.fieldType) {
     case Number:
       return NumField;
@@ -24,9 +28,6 @@ const determineComponentFromProps = (props) => {
       if (props.maxLength) {
         return TextField;
       }
-  }
-  if (props.options) {
-    return SelectField;
   }
 
   switch (field.format) {
