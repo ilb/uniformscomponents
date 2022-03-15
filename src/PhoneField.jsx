@@ -7,6 +7,7 @@ const Phone = ({
   label,
   value,
   onChange,
+  onFocus,
   field,
   disabled,
   error,
@@ -36,6 +37,7 @@ const Phone = ({
       error={error}
       input={
         <NumberFormat
+          onFocus={onFocus}
           ref={inputRef}
           disabled={disabled}
           min={field.minimum || -Infinity}
