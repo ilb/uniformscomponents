@@ -1,4 +1,3 @@
-import Ajv from 'ajv';
 import JSONSchemaBridge from 'uniforms-bridge-json-schema';
 import localize from 'ajv-i18n';
 //import addFormats from 'ajv-formats';
@@ -7,34 +6,7 @@ export { default as DateField } from './DateField';
 export { default as PhoneField } from './PhoneField';
 export { default as SelectField } from './SelectField';
 
-export const ajv = new Ajv({ allErrors: true, useDefaults: true, coerceTypes: true });
-ajv.addKeyword('uniforms');
-ajv.addKeyword('options');
-//addFormats(ajv);
-
-// email or empty string
-ajv.addFormat(
-  'email',
-  /(^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)*$)|(^$)/
-);
-
-ajv.addKeyword('isNotEmpty', {
-  type: 'string',
-  errors: true,
-  validate: function validate(schema, data, parent, key) {
-    validate.errors = [
-      {
-        keyword: 'isNotEmpty',
-        message: 'должно иметь обязательное поле ' + key,
-        params: { keyword: 'isNotEmpty' }
-      }
-    ];
-
-    return typeof data === 'string' && data.trim() !== '';
-  }
-});
-
-export function createValidator(schema, additionalValidator) {
+export function createValidator(schema, ajv, additionalValidator) {
   const validator = ajv.compile(schema);
 
   return (model) => {
@@ -57,6 +29,6 @@ export function createValidator(schema, additionalValidator) {
   };
 }
 
-export function createSchemaBridge(schema, additionalValidator) {
-  return new JSONSchemaBridge(schema, createValidator(schema, additionalValidator));
+export function createSchemaBridge(schema, ajv, additionalValidator) {
+  return new JSONSchemaBridge(schema, createValidator(schema, ajv, additionalValidator));
 }
