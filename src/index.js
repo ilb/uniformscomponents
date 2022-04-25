@@ -38,7 +38,6 @@ ajv.addKeyword('maskedNumberLength', {
   type: 'string',
   errors: true,
   validate: function validate(length, data) {
-    console.log(data);
     validate.errors = [
       {
         keyword: 'isNotEmpty',
