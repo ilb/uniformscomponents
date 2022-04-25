@@ -34,6 +34,25 @@ ajv.addKeyword('isNotEmpty', {
   }
 });
 
+ajv.addKeyword('maskedNumberLength', {
+  type: 'string',
+  errors: true,
+  validate: function validate(length, data) {
+    console.log(data);
+    validate.errors = [
+      {
+        keyword: 'isNotEmpty',
+        message: 'должно быть длинной ' + length + ' символов',
+        params: { keyword: 'maskedNumberLength' }
+      }
+    ];
+
+    const numsLength = data.replace(/\D/g, '').length;
+
+    return typeof data === 'string' && numsLength === length;
+  }
+});
+
 export function createValidator(schema, additionalValidator) {
   const validator = ajv.compile(schema);
 

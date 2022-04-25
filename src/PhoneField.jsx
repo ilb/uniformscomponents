@@ -16,12 +16,25 @@ const Phone = ({
   onAfterChange,
   ...props
 }) => {
+  const format = field.uniforms.format || `+7 (###) ###-##-##`;
+
   const inputRef = useRef();
   const displayType = props.displayType || 'input';
   const handleOnValueChange = (value) => {
     onChange(value);
     onAfterChange && onAfterChange(value);
   };
+
+  useEffect(() => {
+    if (field.uniforms.useFormattedValue && value) {
+      const valueMaxLength = format.split('#').length - 1;
+      const numberString = value.replace(/\D/g, '');
+
+      if (numberString.length > valueMaxLength) {
+        onChange(numberString.substring(numberString.length - valueMaxLength));
+      }
+    }
+  }, []);
 
   useEffect(() => {
     const value = inputRef?.current?.value;
@@ -45,13 +58,16 @@ const Phone = ({
           type={field.uniforms?.type || 'text'}
           value={value}
           onValueChange={(values) => {
-            handleOnValueChange(values.value || null);
+            console.log(values);
+            handleOnValueChange(
+              (field.uniforms.useFormattedValue ? values.formattedValue : values.value) || null
+            );
           }}
           decimalScale={0}
           thousandSeparator={null}
           allowEmptyFormatting={true}
           mask={'_'}
-          format={field.uniforms.format || `+7 (###) ###-##-##`}
+          format={format}
         />
       }
     />

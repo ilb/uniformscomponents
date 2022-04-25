@@ -81,6 +81,11 @@ export default function AppForm() {
         minLength: 10,
         maxLength: 10
       },
+      phone2: {
+        type: 'string',
+        uniforms: { type: 'phone', format: '+7 ### ###-##-##', useFormattedValue: true },
+        maskedNumberLength: 11
+      },
       email: {
         title: 'E-mail',
         type: 'string',
@@ -96,6 +101,7 @@ export default function AppForm() {
   const model = {
     profession: 'businessman',
     zip: 123456,
+    phone2: '+7 123 456-78-90',
     regDate: '2021-04-15',
     year: 2014
   };
