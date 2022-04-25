@@ -127,7 +127,7 @@ export default function AppForm() {
   const model = {
     profession: 'businessman',
     zip: 123456,
-    phone2: '+7 123 456-78-90',
+    phone2: '71234567890',
     regDate: '2021-04-15',
     year: 2014
   };

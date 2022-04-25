@@ -25,16 +25,13 @@ const Phone = ({
     onAfterChange && onAfterChange(value);
   };
 
-  useEffect(() => {
-    if (field.uniforms.useFormattedValue && value) {
-      const valueMaxLength = format.split('#').length - 1;
-      const numberString = value.replace(/\D/g, '');
-
-      if (numberString.length > valueMaxLength) {
-        onChange(numberString.substring(numberString.length - valueMaxLength));
-      }
+  if (field.uniforms.useFormattedValue && value && displayType === 'input') {
+    const valueMaxLength = format.split('#').length - 1;
+    const numberString = value.replace(/\D/g, '');
+    if (numberString.length > valueMaxLength) {
+      value = numberString.substring(numberString.length - valueMaxLength);
     }
-  }, []);
+  }
 
   useEffect(() => {
     const value = inputRef?.current?.value;
