@@ -58,7 +58,6 @@ const Phone = ({
           type={field.uniforms?.type || 'text'}
           value={value}
           onValueChange={(values) => {
-            console.log(values);
             handleOnValueChange(
               (field.uniforms.useFormattedValue ? values.formattedValue : values.value) || null
             );
