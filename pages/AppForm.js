@@ -93,9 +93,35 @@ export default function AppForm() {
       },
       check: { type: 'boolean' },
       zip: { type: 'string', pattern: '[0-9]{5}' },
-      color: { type: 'string', enum: ['red', 'amber', 'green'] }
+      color: { type: 'string', enum: ['red', 'amber', 'green'] },
+      fruits: {
+        type: 'array',
+        items: {
+          type: 'string'
+        }
+      },
+      vegetables: {
+        type: 'array',
+        items: { $ref: '#/$defs/veggie' }
+      }
     },
-    required: ['firstName', 'lastName', 'phone']
+    required: ['firstName', 'lastName', 'phone'],
+    $defs: {
+      veggie: {
+        type: 'object',
+        required: ['veggieName', 'veggieLike'],
+        properties: {
+          veggieName: {
+            type: 'string',
+            description: 'The name of the vegetable.'
+          },
+          veggieLike: {
+            type: 'boolean',
+            description: 'Do I like this vegetable?'
+          }
+        }
+      }
+    }
   };
 
   const model = {

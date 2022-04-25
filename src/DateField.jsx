@@ -32,11 +32,12 @@ const Date = ({
   value,
   wrapClassName,
   onAfterChange,
+  showMonthYear,
   ...props
 }) => {
   //console.log(props);
   const displayType = props.displayType;
-  const dateDisplayFormat = 'dd.MM.yyyy';
+  const dateDisplayFormat = showMonthYear ? 'MM.yyyy' : 'dd.MM.yyyy';
   return (
     <div
       className={classnames(className, { disabled, error, required }, 'field')}
@@ -54,7 +55,7 @@ const Date = ({
           dateValue(value, dateDisplayFormat)
         ) : (
           <DatePicker
-            customInput={<MaskedTextInput mask="99.99.9999" />}
+            customInput={<MaskedTextInput mask={showMonthYear ? '99.9999' : '99.99.9999'} />}
             disabled={disabled}
             id={id}
             className={'adaptiveDate'}
@@ -69,6 +70,8 @@ const Date = ({
             isClearable
             showMonthDropdown
             showYearDropdown
+            showMonthYearPicker={showMonthYear ? true : false}
+            showFullMonthYearPicker={showMonthYear ? true : false}
             dropdownMode="select"
             autoComplete="off"
             preventOpenOnFocus
