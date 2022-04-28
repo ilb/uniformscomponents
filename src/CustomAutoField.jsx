@@ -8,6 +8,7 @@ import SelectField from './SelectField';
 import PhoneField from './PhoneField';
 import NumField from './NumField';
 import TextField from './TextField';
+import ContactListField from './ContactListField';
 
 const determineComponentFromProps = (props) => {
   const { field } = props;
@@ -40,6 +41,11 @@ const determineComponentFromProps = (props) => {
       return NumField;
     case String:
       return TextField;
+    case Array: {
+      if (props.field?.uniforms?.format === 'contacts') {
+        return ContactListField;
+      }
+    }
   }
 
   return null;

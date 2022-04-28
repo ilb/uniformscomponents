@@ -15,14 +15,25 @@ export default function AppForm() {
       lastName: { type: 'string', minLength: 1 },
       readOnlyManual: { type: 'number', minLength: 1 },
       begDate: { type: 'string', format: 'date' },
-      endDate: { type: 'string', format: 'date' }
+      endDate: { type: 'string', format: 'date' },
+      contacts: {
+        title: 'Контакты',
+        type: 'array',
+        uniforms: { format: 'contacts' },
+        items: {
+          uniforms: { type: 'phone', format: '+7 ### ###-##-##', useFormattedValue: true },
+          maskedNumberLength: 11,
+          type: 'string'
+        }
+      }
     }
   };
 
   const model = {
     firstName: 'John',
     lastName: 'Unknown',
-    begDate: '2021-04-15'
+    begDate: '2021-04-15',
+    contacts: [null, null]
   };
 
   return (
@@ -38,6 +49,7 @@ export default function AppForm() {
 
       <CustomAutoField name="begDate" />
       <CustomAutoField name="endDate" />
+      <CustomAutoField name="contacts" />
 
       <SubmitField value="Сохранить" />
     </AutoForm>
