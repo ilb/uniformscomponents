@@ -1,6 +1,7 @@
 import Ajv from 'ajv';
 import JSONSchemaBridge from 'uniforms-bridge-json-schema';
 import localize from 'ajv-i18n';
+import { checkInn } from '../utils/rules';
 //import addFormats from 'ajv-formats';
 export { default as CustomAutoField } from './CustomAutoField';
 export { default as DateField } from './DateField';
@@ -40,7 +41,7 @@ ajv.addKeyword('maskedNumberLength', {
   validate: function validate(length, data) {
     validate.errors = [
       {
-        keyword: 'isNotEmpty',
+        keyword: 'maskedNumberLength',
         message: 'должно быть длинной ' + length + ' символов',
         params: { keyword: 'maskedNumberLength' }
       }
@@ -49,6 +50,22 @@ ajv.addKeyword('maskedNumberLength', {
     const numsLength = data.replace(/\D/g, '').length;
 
     return typeof data === 'string' && numsLength === length;
+  }
+});
+
+ajv.addKeyword('inn', {
+  type: 'string',
+  errors: true,
+  validate: function validate(length, data) {
+    validate.errors = [
+      {
+        keyword: 'inn',
+        message: 'ИНН введен некорректно',
+        params: { keyword: 'inn' }
+      }
+    ];
+
+    return checkInn(data);
   }
 });
 

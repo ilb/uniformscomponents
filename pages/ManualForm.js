@@ -16,6 +16,12 @@ export default function AppForm() {
       readOnlyManual: { type: 'number', minLength: 1 },
       begDate: { type: 'string', format: 'date' },
       endDate: { type: 'string', format: 'date' },
+      inn: {
+        type: 'string',
+        minLength: 10,
+        maxLength: 12,
+        inn: true
+      },
       contacts: {
         title: 'Контакты',
         type: 'array',
@@ -45,8 +51,8 @@ export default function AppForm() {
       showInlineError={true}>
       <AutoField name="firstName" />
       <AutoField name="lastName" />
+      <AutoField name="inn" />
       <CustomAutoField name="readOnlyManual" readOnly />
-
       <CustomAutoField name="begDate" />
       <CustomAutoField name="endDate" />
       <CustomAutoField name="contacts" />
