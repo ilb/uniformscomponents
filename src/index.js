@@ -49,7 +49,7 @@ ajv.addKeyword('maskedNumberLength', {
 
     const numsLength = data.replace(/\D/g, '').length;
 
-    return typeof data === 'string' && numsLength === length;
+    return typeof data === 'string' && (numsLength === 0 || numsLength === length);
   }
 });
 
@@ -65,7 +65,7 @@ ajv.addKeyword('inn', {
       }
     ];
 
-    return checkInn(data);
+    return !data || checkInn(data);
   }
 });
 
