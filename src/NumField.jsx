@@ -16,6 +16,7 @@ const CustomInput = ({
   showInlineError,
   required,
   actionText,
+  className,
   readOnly,
   onActionClick,
   onAfterChange,
@@ -68,7 +69,7 @@ const CustomInput = ({
 
   return (
     <>
-      <Form.Field required={required} error={!!error}>
+      <Form.Field className={className} required={required} error={!!error}>
         {label && <label>{label}</label>}
         {actionText ? (
           <div className={classnames('ui action input', { disabled, error })}>

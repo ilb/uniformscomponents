@@ -93,7 +93,7 @@ const Select = ({
         </div>
       ) : (
         <Form.Select
-          className={classnames({ required })}
+          className={classnames(className, { disabled, error, required })}
           error={!!error && (showInlineError ? error.message : true)}
           selectOnBlur={false}
           placeholder={placeholder}
