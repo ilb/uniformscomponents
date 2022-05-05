@@ -121,7 +121,17 @@ export default function AppForm() {
           }
         }
       }
-    }
+    },
+    allOf: [
+      {
+        if: {
+          properties: { profession: { enum: ['developer', 'tester'] } }
+        },
+        then: {
+          required: ['users']
+        }
+      }
+    ]
   };
 
   const model = {
