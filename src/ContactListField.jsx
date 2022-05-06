@@ -1,12 +1,16 @@
 import { connectField } from 'uniforms';
 import { ListField, ListItemField } from 'uniforms-semantic';
-import PhoneField from './PhoneField';
+import { CustomAutoField, PhoneField } from './index';
 
-function ContactListField() {
+function ContactListField(props) {
   return (
     <ListField>
       <ListItemField name="$">
-        <PhoneField label={null} />
+        {props.items.properties &&
+          Object.keys(props.items.properties).map((item) => (
+            <CustomAutoField name={item} key={item} />
+          ))}
+        {!props.items.properties && <PhoneField label={null} />}
       </ListItemField>
     </ListField>
   );
