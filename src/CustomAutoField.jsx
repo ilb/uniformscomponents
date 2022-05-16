@@ -8,7 +8,7 @@ import SelectField from './SelectField';
 import PhoneField from './PhoneField';
 import NumField from './NumField';
 import TextField from './TextField';
-import ContactListField from './ContactListField';
+import ContactListField from './CustomListField';
 
 const determineComponentFromProps = (props) => {
   const { field } = props;

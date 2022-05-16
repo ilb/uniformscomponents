@@ -1,9 +1,9 @@
 import { connectField } from 'uniforms';
 import { ListField, ListItemField } from 'uniforms-semantic';
-import { CustomAutoField, PhoneField } from './index';
+import { CustomAutoField } from './index';
 import TextField from './TextField';
 
-function ContactListField(props) {
+function CustomListField(props) {
   const displayType = props.field.uniforms?.displayType || 'input';
 
   return (
@@ -15,17 +15,17 @@ function ContactListField(props) {
               Object.keys(props.items.properties).map((item) => (
                 <CustomAutoField name={item} key={item} />
               ))}
-            {!props.items.properties && <PhoneField label={null} />}
+            {!props.items.properties && <CustomAutoField label={null} />}
           </ListItemField>
         </ListField>
       )}
       {displayType === 'text' && (
         <div>
-          <div className="contacts-label-wrapper">
-            <label className="contacts-label">{props.label}</label>
+          <div className="custom-field-label-wrapper">
+            <label className="custom-field-label">{props.label}</label>
           </div>
           {props.items.properties && (
-            <div className="contacts-object">
+            <div className="custom-field-object">
               {props.value.map((object, i) => (
                 <>
                   {Object.keys(props.items.properties).map((item) => (
@@ -36,7 +36,7 @@ function ContactListField(props) {
             </div>
           )}
           {!props.items.properties && (
-            <div className="contacts-array">
+            <div className="custom-field-array">
               {props.value.map((value, i) => (
                 <TextField key={i} label={null} value={value} name={i} displayType="text" />
               ))}
@@ -48,4 +48,4 @@ function ContactListField(props) {
   );
 }
 
-export default connectField(ContactListField);
+export default connectField(CustomListField);
