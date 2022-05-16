@@ -26,6 +26,7 @@ const Select = ({
   errorMessage,
   iconProps,
   capitalize,
+  loading,
   ...props
 }) => {
   const multipleSelect = multiple || field.type === 'array';
@@ -113,6 +114,7 @@ const Select = ({
           }}
           search={(field.uniforms && field.uniforms.search) || false}
           scrolling
+          loading={loading}
           value={selectValue}
           multiple={multipleSelect}
           label={label}
