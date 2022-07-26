@@ -53,6 +53,24 @@ ajv.addKeyword('maskedNumberLength', {
   }
 });
 
+ajv.addKeyword('maskedNumberLengthStrict', {
+  type: 'string',
+  errors: true,
+  validate: function validate(length, data) {
+    validate.errors = [
+      {
+        keyword: 'maskedNumberLength',
+        message: 'должно быть длинной ' + length + ' символов',
+        params: { keyword: 'maskedNumberLength' }
+      }
+    ];
+
+    const numsLength = data.replace(/\D/g, '').length;
+
+    return numsLength === length;
+  }
+});
+
 ajv.addKeyword('inn', {
   type: 'string',
   errors: true,
