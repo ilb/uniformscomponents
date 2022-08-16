@@ -29,7 +29,7 @@ function CustomListField(props) {
               {props.value.map((object, i) => (
                 <>
                   {Object.keys(props.items.properties).map((item) => (
-                    <TextField key={i} name={i + '.' + item} displayType="text" />
+                    <CustomAutoField key={i} name={i + '.' + item} displayType="text" />
                   ))}
                 </>
               ))}
