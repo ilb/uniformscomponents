@@ -1,1 +1,7 @@
 .adaptiveDate{width: 100% !important;}
+
+.ui.form input[type="password"]::-ms-reveal,
+.ui.form input[type="password"]::-ms-clear
+{
+    display: none !important;
+}
