@@ -51,9 +51,22 @@ const determineComponentFromProps = (props) => {
   return null;
 };
 
+const styles = `
+  .adaptiveDate {
+    width: 100% !important;
+  }
+`;
+
 const CustomAuto = (props) => {
   const Component = determineComponentFromProps(props) || AutoField;
-  return <Component {...props} name="" />;
+  return (
+    <>
+      <style jsx global>
+        {styles}
+      </style>
+      <Component {...props} name="" />
+    </>
+  );
 };
 
 export default connectField(CustomAuto, {
