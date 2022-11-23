@@ -1,4 +1,4 @@
-import { checkInn } from './rules';
+import { checkInn, checkSnils } from './rules';
 
 export default (ajv) => {
   ajv.addKeyword('isNotEmpty', {
@@ -66,6 +66,22 @@ export default (ajv) => {
       ];
 
       return !data || checkInn(data);
+    }
+  });
+
+  ajv.addKeyword('snils', {
+    type: 'string',
+    errors: true,
+    validate: function validate(length, data) {
+      validate.errors = [
+        {
+          keyword: 'inn',
+          message: 'СНИЛС введен некорректно',
+          params: { keyword: 'snils' }
+        }
+      ];
+
+      return !data || checkSnils(data);
     }
   });
 
