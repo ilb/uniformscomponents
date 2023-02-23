@@ -104,7 +104,7 @@ const Date = ({
               />
             }
             disabled={disabled}
-            id={id}
+            id={name}
             className={'adaptiveDate'}
             maxDate={dateParse(max)}
             minDate={dateParse(min)}

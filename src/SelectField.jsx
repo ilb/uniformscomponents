@@ -20,6 +20,7 @@ const Select = ({
   onAfterChange,
   className,
   id,
+  name,
   iconLeft,
   required,
   icon,
@@ -115,6 +116,7 @@ const Select = ({
           search={(field.uniforms && field.uniforms.search) || false}
           scrolling
           loading={loading}
+          id={name}
           value={selectValue}
           multiple={multipleSelect}
           label={label}

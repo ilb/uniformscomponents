@@ -11,6 +11,7 @@ const CustomInput = ({
   value,
   onChange,
   field,
+  name,
   disabled,
   error,
   showInlineError,
@@ -50,6 +51,7 @@ const CustomInput = ({
 
   const inputElement = (
     <NumberFormat
+      id={name}
       disabled={disabled}
       onBlur={onBlur}
       min={field.minimum || -Infinity}

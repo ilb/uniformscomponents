@@ -60,10 +60,10 @@ function Text({
         )}>
         {displayType === 'input' && (
           <MaskedTextInput
+            id={name}
             mask={mask}
             autoComplete={autoComplete}
             disabled={disabled}
-            id={id}
             name={name}
             onInput={(event) => {
               if (capitalize) {

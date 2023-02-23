@@ -12,7 +12,6 @@ import ContactListField from './CustomListField';
 
 const determineComponentFromProps = (props) => {
   const { field } = props;
-
   if (props.field.uniforms?.type === 'phone') {
     return PhoneField;
   }
@@ -69,7 +68,7 @@ const CustomAuto = (props) => {
       <style jsx global>
         {styles}
       </style>
-      <Component {...props} name="" />
+      <Component {...props} name="" id={props.name} />
     </>
   );
 };

@@ -8,6 +8,7 @@ const Phone = ({
   value,
   onChange,
   onFocus,
+  name,
   field,
   disabled,
   error,
@@ -47,6 +48,7 @@ const Phone = ({
       error={error}
       input={
         <NumberFormat
+          id={name}
           onFocus={onFocus}
           ref={inputRef}
           disabled={disabled}
