@@ -28,7 +28,6 @@ export default (ajv) => {
           params: { keyword: 'maskedNumberLength' }
         }
       ];
-
       const numsLength = data.replace(/\D/g, '').length;
 
       return typeof data === 'string' && (numsLength === 0 || numsLength === length);
