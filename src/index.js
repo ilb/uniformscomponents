@@ -26,16 +26,15 @@ export function createValidator(schema, additionalValidator) {
   return (model) => {
     let errors = [];
 
-    validator(model);
-
-    if (validator.errors && validator.errors.length) {
-      errors = validator.errors;
-    }
-
     if (additionalValidator) {
       errors = errors.concat(additionalValidator(model));
     }
 
+    validator(model);
+
+    if (validator.errors && validator.errors.length) {
+      errors = errors.concat(validator.errors);
+    }
     if (errors.length) {
       localize.ru(errors);
       return { details: errors };
