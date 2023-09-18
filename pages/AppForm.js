@@ -2,6 +2,7 @@ import React from 'react';
 import { AutoForm } from 'uniforms-semantic';
 import { createSchemaBridge } from '../src';
 import { CustomAutoField } from '../src';
+import Validator from "../src/utils/Validator";
 
 export default function AppForm() {
   function onSubmit(data) {
@@ -144,7 +145,7 @@ export default function AppForm() {
 
   return (
     <AutoForm
-      schema={createSchemaBridge(schema)}
+      schema={createSchemaBridge(schema, Validator)}
       model={model}
       onSubmit={onSubmit}
       autoField={CustomAutoField}
