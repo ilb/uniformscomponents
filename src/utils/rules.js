@@ -47,7 +47,7 @@ export const checkInn = (value) => {
 };
 
 export const checkSnils = (checkedValue) => {
-  checkedValue = checkedValue.replace(/\D/g, '')
+  checkedValue = checkedValue.replace(/\D/g, '');
   let checkSum = parseInt(checkedValue.slice(9), 10);
 
   //строка как массив(для старых браузеров)
@@ -64,7 +64,9 @@ export const checkSnils = (checkedValue) => {
     checkedValue[6] * 3 +
     checkedValue[7] * 2 +
     checkedValue[8] * 1;
-
+  if (!sum) {
+    return false;
+  }
   if (sum < 100 && sum === checkSum) {
     return true;
   } else if ((sum === 100 || sum === 101) && checkSum === 0) {
