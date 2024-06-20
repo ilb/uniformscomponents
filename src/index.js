@@ -25,7 +25,7 @@ export function createValidator(schema, additionalValidator) {
 
   return (model) => {
     let errors = [];
-
+    traverseObject(model)
     if (additionalValidator) {
       errors = errors.concat(additionalValidator(model));
     }
@@ -44,4 +44,36 @@ export function createValidator(schema, additionalValidator) {
 
 export function createSchemaBridge(schema, additionalValidator) {
   return new JSONSchemaBridge(schema, createValidator(schema, additionalValidator));
+}
+
+
+function cleanString(str) {
+  if(str){
+    let cleanedStr = str
+  // Заменяем табуляции на пробелы
+  cleanedStr = cleanedStr.replace('\t',' ')
+  // Удаляем последовательности пробелов, если их больше двух
+  cleanedStr = cleanedStr.replace(/ {3,}/g, ' ');
+  // Удаляем пробелы с начала и конца строки
+  cleanedStr = cleanedStr.trim();
+
+  return cleanedStr;
+}
+return str
+}
+
+function traverseObject(obj) {
+  for (let key in obj) {
+      if (obj.hasOwnProperty(key)) { // Проверка, что ключ принадлежит самому объекту, а не его прототипу
+          let value = obj[key];
+
+          if (typeof value === 'string') {
+              obj[key] = cleanString(value); // Очистка строки и присвоение значения обратно в объект
+          }
+
+          if (typeof obj[key] === 'object' && obj[key] !== null) {
+              traverseObject(obj[key]); // Рекурсивный вызов для вложенных объектов
+          }
+      }
+  }
 }
