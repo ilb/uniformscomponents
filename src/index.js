@@ -53,7 +53,7 @@ function cleanString(str) {
   // Заменяем табуляции на пробелы
   cleanedStr = cleanedStr.replace('\t',' ')
   // Удаляем последовательности пробелов, если их больше двух
-  cleanedStr = cleanedStr.replace(/ {3,}/g, ' ');
+  cleanedStr = cleanedStr.replace(/ {2,}/g, ' ');
   // Удаляем пробелы с начала и конца строки
   cleanedStr = cleanedStr.trim();
 
